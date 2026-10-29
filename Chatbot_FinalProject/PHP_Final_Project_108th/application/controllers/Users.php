@@ -36,7 +36,7 @@ class Users extends CI_Controller
         } else {
             $data = array(
               "email" => $this->input->post('email'),
-              "password" => $this->input->post('password'),
+              "password" => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
               "name" => $this->input->post('name')
             );
             $user_id = $this->user_model->create($data);

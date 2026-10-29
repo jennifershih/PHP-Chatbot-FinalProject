@@ -14,7 +14,7 @@
     <tbody>
       <?php foreach ($articles as $article): ?>
         <tr>
-        	<td><?php echo $article['title'] ?></td>
+        	<td><?php echo html_escape($article['title']) ?></td>
         	<td><?php echo $article['views'] ?></td>
         	<td><?php echo $article['created_at'] ?></td>
          	<td><a href="<?php echo site_url('articles/'.$article['id']) ?>">觀看</a></td>

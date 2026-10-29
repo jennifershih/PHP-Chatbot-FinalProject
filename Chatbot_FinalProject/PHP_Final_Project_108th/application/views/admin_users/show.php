@@ -1,7 +1,7 @@
 
 <div class="user_info_wrap">
 
-<h1 class="user_name"><?php echo $user['name'] ?></h1>
+<h1 class="user_name"><?php echo html_escape($user['name']) ?></h1>
 
 <?php if (empty($user['is_admin'])) {
     $admin = "否";
@@ -12,11 +12,7 @@
 <table class="user_info">
 	<tr>
 		<td>信箱</td>
-		<td><?php echo $user['email'] ?></td>
-	</tr>
-	<tr>
-		<td>密碼</td>
-		<td><?php echo $user['password'] ?></td>
+		<td><?php echo html_escape($user['email']) ?></td>
 	</tr>
 		<tr>
 		<td>建立帳號時間</td>

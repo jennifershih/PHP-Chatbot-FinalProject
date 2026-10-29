@@ -8,7 +8,7 @@
         var data = new google.visualization.arrayToDataTable([
           ['', ''],
         <?php foreach ($likes as $like): ?>
-          ["<?= $like['name'] ?>", <?= $like['total'] ?>],
+          ["<?= html_escape($like['name']) ?>", <?= $like['total'] ?>],
         <?php endforeach; ?>
         ]);
         var options = {

@@ -27,6 +27,8 @@ class Sessions extends CI_Controller
         $data['user'] = $this->user_model->getUser($email, $password);
 
         if ($data['user']) {
+            // New session id after login to prevent session fixation.
+            $this->session->sess_regenerate(TRUE);
             $this->session->set_flashdata('message', "登入成功。");
             $_SESSION['user']['id'] =  $data['user']->id;
             // if user is admin
@@ -38,7 +40,7 @@ class Sessions extends CI_Controller
         } else {
             $this->session->set_flashdata('message', "登入失敗，請重新輸入帳密。");
 
-            redirect('/login', 'refresh');
+            redirect('/sign_in', 'refresh');
             return true;
         }
     }

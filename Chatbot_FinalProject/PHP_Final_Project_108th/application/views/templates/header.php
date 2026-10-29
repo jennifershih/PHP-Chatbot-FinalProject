@@ -9,8 +9,7 @@
 	<link rel = "stylesheet" type = "text/css" href = "<?php echo base_url('public/assets/article.css'); ?>" media="all">
 	<link rel = "stylesheet" type = "text/css" href = "<?php echo base_url('public/assets/manage.css'); ?>" media="all">
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<!--[if lt IE 9]-->
 　　 <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>

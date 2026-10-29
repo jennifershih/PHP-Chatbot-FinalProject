@@ -40,10 +40,12 @@ class Admin_users extends CI_Controller
     {
         $this->checkSession();
         $this->check_admin();
-        $this->form_validation->set_rules('email', 'Email', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        // Password is optional here: leaving it empty keeps the current one.
         if ($this->form_validation->run() == false) {
             $this->session->set_flashdata('message', "更新會員失敗");
+            $data['user'] = $this->user_model->find($user_id);
+            $this->load->vars($data);
             $this->load->view('templates/header');
             $this->load->view('admin_users/edit');
             $this->load->view('templates/footer');
@@ -54,7 +56,7 @@ class Admin_users extends CI_Controller
                 $data["email"] = $this->input->post('email');
             }
             if (!empty($this->input->post('password'))) {
-                $data["password"] = $this->input->post('password');
+                $data["password"] = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
             }
             $data["name"] = $this->input->post('name');
             $this->user_model->update($data, $user_id);

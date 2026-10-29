@@ -75,11 +75,12 @@ $query_builder = true;
 
 $db['default'] = array(
     'dsn'    => '',
-    'hostname' => 'localhost',
-    'username' => 'root',
-    'password' => '',
-    'database' => 'chatbot',
-    'dbdriver' => 'mysqli',
+    // Override with environment variables, e.g. DB_PORT=8888 for MAMP.
+    'hostname' => getenv('DB_HOST') ?: 'localhost',
+    'username' => getenv('DB_USER') ?: 'root',
+    'password' => getenv('DB_PASSWORD') ?: '',
+    'database' => getenv('DB_NAME') ?: 'chatbot',
+    'dbdriver' => getenv('DB_DRIVER') ?: 'mysqli',
     'dbprefix' => '',
     'pconnect' => false,
     'db_debug' => (ENVIRONMENT !== 'production'),
@@ -93,6 +94,6 @@ $db['default'] = array(
     'stricton' => false,
     'failover' => array(),
     'save_queries' => true,
-    'port' =>8888
+    'port' => (int) (getenv('DB_PORT') ?: 3306),
 );
 

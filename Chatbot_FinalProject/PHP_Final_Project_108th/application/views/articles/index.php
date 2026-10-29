@@ -9,10 +9,10 @@
     <?php endif; ?>
 		<section class="article-brief-content">
 			<div class="article-title">
-				<a href="<?php echo site_url('articles/'.$article['id']) ?>"><?php echo $article['title'] ?></a>
+				<a href="<?php echo site_url('articles/'.$article['id']) ?>"><?php echo html_escape($article['title']) ?></a>
 			</div>
 			<div class="article-intro">
-				<?php echo $article['content'] ?>
+				<?php echo html_escape($article['content']) ?>
 			</div>
 			<div class="article-footer">
 				<?php echo $article['created_at'] ?>

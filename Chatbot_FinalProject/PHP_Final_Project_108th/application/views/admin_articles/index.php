@@ -16,7 +16,7 @@
     <tbody>
       <?php foreach ($articles as $article): ?>
         <tr>
-         	<td><?php echo $article['title'] ?></td>
+         	<td><?php echo html_escape($article['title']) ?></td>
 					<td><?php echo $article['user_id'] ?></td>
           <td><?php echo $article['views'] ?></td>
           <td><?php echo $article['created_at'] ?></td>

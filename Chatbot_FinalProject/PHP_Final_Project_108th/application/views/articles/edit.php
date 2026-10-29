@@ -7,8 +7,7 @@
 	<link rel = "stylesheet" type = "text/css" href = "<?php echo base_url('public/assets/all.css'); ?>" media="all">
 	<link rel = "stylesheet" type = "text/css" href = "<?php echo base_url('public/assets/upload.css'); ?>" media="all">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<!--[if lt IE 9]-->
 　	<!--[endif]-->
@@ -48,11 +47,11 @@
 	<?php echo form_open('articles/'.$article['id'].'/update') ?>
 			<div class="data">
 				<label for="upload-title">主標題</label><br/>
-				<input type="text" name="title" id="upload-title" value="<?php echo $article['title']; ?>">
+				<input type="text" name="title" id="upload-title" value="<?php echo html_escape($article['title']); ?>">
 			</div>
 			<div class="data">
 				<label for="upload-url">超連結</label><br/>
-				<input type="url" name="url" id="upload-url" value="<?php echo $article['url']; ?>">
+				<input type="url" name="url" id="upload-url" value="<?php echo html_escape($article['url']); ?>">
 			</div>
 			<div class="data">
 				<label for="upload-tag">標籤分類</label><br/>
@@ -60,11 +59,11 @@
 			</div>
 			<div class="data">
 				<label for="upload-intro">文章內容</label><br/>
-				<textarea name="content" rows="8" cols="80" id="upload-intro"><?php echo $article['content']; ?></textarea>
+				<textarea name="content" rows="8" cols="80" id="upload-intro"><?php echo html_escape($article['content']); ?></textarea>
 			</div>
 			<div class="data">
 				<label for="upload-photo">圖片網址(圖片用在首頁文章列表中的文章縮圖)</label><br/>
-				<input type="text" name="pic_url" id="upload-photo" value="<?php echo $article['pic_url']; ?>">
+				<input type="text" name="pic_url" id="upload-photo" value="<?php echo html_escape($article['pic_url']); ?>">
 			</div>
 			<div class="confirm">
 				<ul>

@@ -1,16 +1,29 @@
 <?php
 class User_model extends CI_Model
 {
+    /**
+     * Return the user when the email and password match, otherwise null.
+     * Passwords are stored with password_hash(); accounts that still hold a
+     * plain-text password (from the original seed data) are upgraded on login.
+     */
     public function getUser($email, $password)
     {
-        $this->db->select("*");
-        $query = $this->db->get_where("users", array("email" => $email, "password" => $password ));
-
-        if ($query->num_rows() > 0) { 
-            return $query->row();
-        } else {
+        $query = $this->db->get_where("users", array("email" => $email));
+        $user = $query->row();
+        if (!$user) {
             return null;
         }
+
+        $info = password_get_info($user->password);
+        if ($info['algo'] !== null && $info['algo'] !== 0) {
+            return password_verify($password, $user->password) ? $user : null;
+        }
+
+        if (hash_equals((string) $user->password, (string) $password)) {
+            $this->update(array("password" => password_hash($password, PASSWORD_DEFAULT)), $user->id);
+            return $user;
+        }
+        return null;
     }
 
     public function all()
